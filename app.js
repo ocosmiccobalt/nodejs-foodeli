@@ -1,8 +1,9 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 
-import enableCors from './middlewares/cors.js';
 import { initDb } from './data/database.js';
+import enableCors from './middlewares/cors.js';
+import { default as productsRoutes } from './routes/products.routes.js';
 
 const app = express();
 
@@ -10,9 +11,7 @@ app.use(bodyParser.json());
 
 app.use(enableCors);
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Foodeli means Food Delivery!' });
-});
+app.use('/products', productsRoutes);
 
 app.use((req, res) => {
   if (req.method === 'OPTIONS') {
