@@ -13,7 +13,7 @@ export async function getCart(req, res, next) {
 }
 
 export async function addCart(req, res, next) {
-  const cartData = req.body.cart;
+  const cartData = req.body;
 
   const cart = new Cart({
     items: cartData.items,
@@ -42,7 +42,7 @@ export async function addCart(req, res, next) {
 
 export async function updateCart(req, res, next) {
   const cartId = req.params.id;
-  const cartData = req.body.cart;
+  const cartData = req.body;
 
   const cart = new Cart({
     id: cartId,
